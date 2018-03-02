@@ -1,5 +1,6 @@
 /* --- ROOT CSS --- */
 
+
 body
 {
 	overflow: hidden;
@@ -15,7 +16,9 @@ body
 	left: 0px;
 	bottom: 0px;
 	right: 0px;
-	background: -webkit-linear-gradient(45deg, #ddc9b9 0%, #daf0f2 100%);
+	background: #f0f0f0;
+  	background-image: radial-gradient(hsla(347, 0%, 79%, 1) 5%, transparent 0);
+  	background-size: 40px 40px;
 	transform-style: preserve-3d;
 	z-index: -1000;
 }
@@ -43,14 +46,14 @@ a:hover { color: #000;}
 ::-webkit-scrollbar
 {
 	background: -webkit-linear-gradient(top, #eee, #f4f4f4 50%, #eee);
-	border-radius: 12px;
+	border-radius: 1px;
 	border: 1px solid #e8e8e8;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	cursor: pointer;
 }
 ::-webkit-scrollbar-button { display: none; }
-::-webkit-scrollbar-thumb { background: #ccc; border-radius: 12px; border: 1px solid #ccc; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; border: 1px solid #ccc; }
 ::-webkit-scrollbar-thumb:hover { background: #289aa5; border: 1px solid #148691; }
 
 .templates, .hidden { display: none; }
