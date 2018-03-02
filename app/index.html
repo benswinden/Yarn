@@ -35,18 +35,20 @@
 			<!-- search form -->
 			<div class="app-search">
 				<input type="text" class="search-field"/>
-				<div class="search-title search-item">
-					<input type="checkbox" checked="checked" id="search-title" />
-					<label for="search-title">Title</label>
-				</div>
-				<div class="search-body search-item">
-					<input type="checkbox" id="search-body" />
-					<label for="search-body">Body</label>
-				</div>
-				<div class="search-tags search-item">
-					<input type="checkbox" id="search-tags" />
-					<label for="search-tags">Tags</label>
-				</div>
+
+				<label class="search-title search-item">Title
+					<input type="checkbox" checked="checked" id="search-title">
+  				<span class="checkmark"></span>
+				</label>
+				<label class="search-body search-item">Body
+					<input type="checkbox" checked="checked" id="search-body">
+					<span class="checkmark"></span>
+				</label>
+				<label class="search-tags search-item">Tags
+					<input type="checkbox" checked="checked" id="search-tags">
+  				<span class="checkmark"></span>
+				</label>
+
 			</div>
 
 			<!-- zoom controls -->
@@ -128,9 +130,9 @@
 					<div class="editor-container">
 						<div class="editor" id="editor"
 							data-bind="
-							ace: app.editing().body, 
+							ace: app.editing().body,
 							aceOptions: { mode: 'yarn', theme: 'yarn', showPrintMargin: false }">
-						</div> 
+						</div>
 					</div>
 					<!--<div class="icon close" data-bind="click:app.saveNode"></div>-->
 					<div class="editor-footer">
