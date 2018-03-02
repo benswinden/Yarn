@@ -27,7 +27,7 @@ var App = function(name, version)
 		0
 	];
 	this.shifted = false;
-	
+
 	this.UPDATE_ARROWS_THROTTLE_MS = 25;
 
 	//this.editingPath = ko.observable(null);
@@ -146,7 +146,7 @@ var App = function(name, version)
 
 			$(".nodes").on("mousemove", function(e)
 			{
-				
+
 				if (dragging)
 				{
 					//if(e.ctrlKey)
@@ -161,6 +161,7 @@ var App = function(name, version)
 						}
 						else
 						{
+							/*
 							self.transformOrigin[0] += e.pageX - offset.x;
 							self.transformOrigin[1] += e.pageY - offset.y;
 
@@ -168,8 +169,8 @@ var App = function(name, version)
 
 							offset.x = e.pageX;
 							offset.y = e.pageY;
+							*/
 
-							/*
 							var nodes = self.nodes();
 							for (var i in nodes)
 							{
@@ -178,16 +179,16 @@ var App = function(name, version)
 							}
 							offset.x = e.pageX;
 							offset.y = e.pageY;
-							*/
+							
 						}
 					}
 					else
-					{	
+					{
 						MarqueeOn = true;
 
 						var scale = self.cachedScale;
 
-						if(e.pageX > offset.x && e.pageY < offset.y) 
+						if(e.pageX > offset.x && e.pageY < offset.y)
 						{
 							MarqRect.x1 = offset.x;
 							MarqRect.y1 = e.pageY;
@@ -213,10 +214,10 @@ var App = function(name, version)
 							MarqRect.x1 = e.pageX;
 							MarqRect.y1 = offset.y;
 							MarqRect.x2 = offset.x;
-							MarqRect.y2 = e.pageY;	
+							MarqRect.y2 = e.pageY;
 						}
 
-						$("#marquee").css({ x:MarqRect.x1, 
+						$("#marquee").css({ x:MarqRect.x1,
 							y:MarqRect.y1,
 							width:Math.abs(MarqRect.x1-MarqRect.x2),
 							height:Math.abs(MarqRect.y1-MarqRect.y2)});
@@ -224,7 +225,7 @@ var App = function(name, version)
 						//Select nodes which are within the marquee
 						// MarqueeSelection is used to prevent it from deselecting already
 						// selected nodes and deselecting onces which have been selected
-						// by the marquee 
+						// by the marquee
 						var nodes = self.nodes();
 						for(var i in nodes)
 						{
@@ -233,10 +234,10 @@ var App = function(name, version)
 
 							//test the Marque scaled to the nodes x,y values
 
-							var holder = $(".nodes-holder").offset(); 
-							var marqueeOverNode = (MarqRect.x2 - holder.left) / scale > nodes[i].x()  
+							var holder = $(".nodes-holder").offset();
+							var marqueeOverNode = (MarqRect.x2 - holder.left) / scale > nodes[i].x()
 											   && (MarqRect.x1 - holder.left) / scale < nodes[i].x() + nodes[i].tempWidth
-        									   && (MarqRect.y2 - holder.top) / scale > nodes[i].y()   
+        									   && (MarqRect.y2 - holder.top) / scale > nodes[i].y()
         									   && (MarqRect.y1 - holder.top) / scale < nodes[i].y() + nodes[i].tempHeight;
 
 							if(marqueeOverNode)
@@ -258,7 +259,7 @@ var App = function(name, version)
 							}
 						}
 					}
-					
+
 				}
 
 			});
@@ -336,11 +337,11 @@ var App = function(name, version)
 				x += event.pageX / self.cachedScale;
 				y += event.pageY / self.cachedScale;
 
-				self.newNodeAt(x, y); 
-			} 
+				self.newNodeAt(x, y);
+			}
 
-			return !isAllowedEl; 
-		}); 
+			return !isAllowedEl;
+		});
 
 		$(document).on('keydown', function(e){
 			//global ctrl+z
@@ -387,7 +388,7 @@ var App = function(name, version)
 				{
 					self.focusedNodeIdx = -1;
 				}
-				
+
 				if (++self.focusedNodeIdx >= nodes.length) {
 					self.focusedNodeIdx = 0;
 				}
@@ -512,17 +513,17 @@ var App = function(name, version)
 
 		var historyItem = null;
 
-		if(direction == "undo") 
+		if(direction == "undo")
 			historyItem = self.nodeHistory.pop();
 		else
 			historyItem = self.nodeFuture.pop();
-		
+
 		if(!historyItem) return;
 
 		var action = historyItem.action;
 		var node = historyItem.node;
 
-		
+
 		if(direction == "undo") //undo actions
 		{
 			if(action == "created")
@@ -550,14 +551,14 @@ var App = function(name, version)
 			}
 
 			self.nodeHistory.push(historyItem);
-		}		
+		}
 	}
 
 	this.recreateNode = function(node, x, y)
 	{
 		self.nodes.push(node);
 		node.moveTo(x, y);
-		self.updateNodeLinks(); 
+		self.updateNodeLinks();
 	}
 
 	this.setSelectedColors = function(node)
@@ -566,7 +567,7 @@ var App = function(name, version)
 		nodes.splice(nodes.indexOf(node), 1);
 
 		for(var i in nodes)
-			nodes[i].colorID(node.colorID());		
+			nodes[i].colorID(node.colorID());
 	}
 
 	this.getSelectedNodes = function()
@@ -626,7 +627,7 @@ var App = function(name, version)
 		self.nodes.push(node);
 		if (updateArrows == undefined || updateArrows == true)
 			self.updateNodeLinks();
-		
+
 		self.recordNodeAction("created", node);
 
 		return node;
@@ -635,7 +636,7 @@ var App = function(name, version)
 	this.newNodeAt = function(x, y)
 	{
 		var node = new Node();
-		
+
 		self.nodes.push(node);
 
 		node.x(x-100);
@@ -647,7 +648,7 @@ var App = function(name, version)
 	}
 
 	this.removeNode = function(node)
-	{	
+	{
 		if(node.selected)
 		{
 			self.deleteSelectedNodes();
