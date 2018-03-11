@@ -4,15 +4,18 @@ exports.isDark = false;
 exports.cssClass = "ace-yarn";
 exports.cssText = "\
 .ace-yarn .ace_gutter {\
+  opacity: 0;\
+  width: 0;\
 background: #e8e8e8;\
 color: #AAA;\
 }\
 .ace-yarn  {\
+  margin 0 5rem 0 5rem;\
 background: #fff;\
 color: #000;\
 }\
 .ace-yarn .ace_comment {\
-color: #44fe66;\
+color: #e8e8e8;\
 font-style: italic;\
 }\
 .ace-yarn .ace_hashtag {\
@@ -49,7 +52,7 @@ font-weight: bold;\
 color: black;\
 }\
 .ace-yarn .ace_marker-layer .ace_active-line {\
-background: rgb(255, 255, 204);\
+xbackground: rgb(255, 255, 204);\
 }\
 .ace-yarn .ace_marker-layer .ace_selection {\
 background: rgb(181, 213, 255);\
